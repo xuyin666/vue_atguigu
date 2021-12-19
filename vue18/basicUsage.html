@@ -1,0 +1,109 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <hello></hello>
+        <hr>
+        <h1>{{msg}}</h1>
+        <hr>
+        <school></school>
+        <hr>
+        <student></student>
+    </div>
+    <div id="root2">
+        <hello></hello>
+    </div>
+</body>
+    <script type="text/javascript">
+    
+    Vue.config.productionTip = false
+
+    // create school component
+    const school = Vue.extend({
+        // el: '#root',
+        template: `
+            <div>
+                <h2>School Name: {{schoolName}}</h2>
+                <h2>School Addresse: {{addresse}}</h2>
+                <button @click="showName">Click me in School</button>
+            </div>
+        `,
+        data() {
+            return {
+                schoolName: 'atGuigu',
+                addresse: 'Pekin',
+            }
+        },
+        methods: {
+            showName() {
+                alert(this.schoolName)
+            }
+        },
+    })
+
+    const student = Vue.extend({
+        template: `
+            <div>
+                <h2>Student Name: {{studentName}}</h2>
+                <h2>Student Age: {{age}}</h2>
+            </div>
+        `,
+        data() {
+            return {
+                studentName: 'San',
+                age: 18
+            }
+        }
+    })
+
+    const hello = Vue.extend({
+        template: `
+            <div>
+                <h2>Hello {{name}}!</h2>
+            </div>
+        `,
+        data(){
+            return {
+                name: 'Tom'
+            }
+        }
+    })
+
+    // register global
+    Vue.component('hello', hello)
+
+    new Vue({
+        el: '#root',
+        data: {
+            msg: 'hello'
+        },
+        // inscrire component(local inscrirement)
+        components: {
+            school,
+            student
+        }
+    })
+
+    new Vue({
+        el: '#root2'
+    })
+
+
+    // new Vue({
+    //     el: '#root',
+    //     data: {
+    //         schoolName: 'atGuigu',
+    //         addresse: 'Pekin',
+    //         studentName: 'San',
+    //         age: 18
+    //     }
+    // })
+
+    </script>
+</html>

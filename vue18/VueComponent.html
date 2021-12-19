@@ -1,0 +1,79 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <school></school>
+        <hello></hello>
+    </div>
+</body>
+    <script type="text/javascript">
+    
+        Vue.config.productionTip = false
+
+        const school = Vue.extend({
+            name: 'school',
+            template:`
+                <div>
+                    <h2>School Name: {{name}}</h2>
+                    <h2>School Address: {{address}}</h2>
+                    <button @click="showName">Click me show the name</button>
+                </div>
+            `,
+            data() {
+                return {
+                    name: 'atGuigu',
+                    address: 'Beijing'
+                }
+            },
+            methods: {
+                showName(){
+                    alert(this.name)
+                }
+            },
+        })
+
+
+        const test = Vue.extend({
+            template: `<span>Hello, Atguigu</span>`
+        })
+
+        const hello = Vue.extend({
+            template: `
+                <div>
+                    <test></test>    
+                    <h2>{{msg}}</h2>
+                </div>
+            `,
+            data(){
+                return {
+                    msg : 'Hello Vuejs'
+                }
+            },
+            components:{
+                test
+            }
+        })
+
+
+        // console.log('@', school === false)
+        // console.log('@', school)
+        // console.log('#', hello)
+
+        const vm = new Vue({
+            el: '#root',
+            components: {
+                school,
+                hello
+            }
+        })
+
+        console.log(vm)
+
+    </script>
+</html>

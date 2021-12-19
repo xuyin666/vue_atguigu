@@ -1,0 +1,72 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h2>Today it is {{ info }}</h2> <br/>
+        <button @click="changeWeather">Change Weather</button> 
+        <br />
+        <h3>the value of a is {{ number.a }}</h3>
+        <button @click="number.a++">Click me let a = a+1</button>
+        <br />
+        <h3>the value of b is {{ number.b }}</h3>
+        <button @click="number.b++">Click me let b = b+1</button>
+    </div>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false;
+    const vm = new Vue({
+        el: "#root",
+        data: {
+            isHot: true,
+            number: {
+                a: 1,
+                b: 1
+            }
+        },
+        computed: {
+            info(){
+                return this.isHot ? 'Hot' : 'Cold'
+            }
+        },
+        methods: {
+            changeWeather() {
+                this.isHot = !this.isHot
+            }
+        },
+        watch: {
+            isHot: {
+                // immediate: true, // initialisation invoke handler
+                // when isHot is modified
+                handler(newValue, oldValue) {
+                    console.log("@ newValue, oldValue", newValue, oldValue)
+                }
+            },
+            // watch an object and find the change of a property in 
+            // 'number.a': {
+            //     handler() {
+            //         console.log("a is changed");
+            //     }
+            // },
+            // 'number.b': {
+            //     handler() {
+            //         console.log("b is changed");
+            //     }
+            // }
+            number: {
+                deep: true,
+                handler() {
+                    console.log('number has been changed')
+                }
+            }
+        }
+    })
+
+
+</script>
+</html>

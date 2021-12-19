@@ -1,0 +1,62 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h1>School Info</h1>
+        <h2>Name: {{ school.name }}</h2>
+        <h2>Address: {{school.address}}</h2>
+        <h2 v-if="school.leader">Master: {{school.leader}}</h2>
+        <hr/>
+        <h1>Student Info</h1>
+        <button @click="addSex"> Add a Sex, value defaut is M</button>
+        <h2>Name: {{student.name}}</h2>
+        <h2 v-if="student.sex">Sex: {{student.sex}}</h2>
+        <h2>Age: Real {{student.age.rAge}}, Speak: {{student.age.sAge}}</h2>
+        <ul>
+            <li v-for="(f,index) in student.friends" :key="index">
+                {{f.name}} - {{f.age}}
+            </li>
+        </ul>
+    </div>
+</body>
+
+<script text="text/javascript">
+    Vue.config.productionTip = false
+
+    // use computed
+    const vm = new Vue({
+        el: '#root',
+        data: {
+            school: {
+                name: 'atGuiGu',
+                address: 'Pekin',
+                leader: 'haha'
+            },
+            student: {
+                name: 'tom',
+                age: {
+                    rAge: 40,
+                    sAge: 29
+                },
+                friends: [
+                    {name: 'jerry', age: 35},
+                    {name: 'tony', age: 36}
+                ]
+            }
+        },
+        methods: {
+            addSex(){
+                // Vue.set(this.student, 'sex', 'M')
+                this.$set(this.student, 'sex', 'M')
+            }
+        },
+    })
+
+</script>
+</html>

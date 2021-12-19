@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h2>Bienvenu {{name}} Learning</h2>
+        <input type="text" placeholder="Enter show input" @keyup.ctrl.y="showInfo">
+    </div>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false;
+    Vue.config.keyCodes.huiche = 13;
+
+
+    new Vue({
+        el: "#root",
+        data: {
+            name: 'atGuigu'
+        },
+        methods: {
+            showInfo(e){
+                // console.log(e.key, e.keyCode);
+                // if (e.keyCode !== 13) return;
+                console.log(e.target.value);
+            }
+        }
+    })
+</script>
+</html>

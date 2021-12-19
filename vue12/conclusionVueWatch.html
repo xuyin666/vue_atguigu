@@ -1,0 +1,85 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h1>Student Info</h1>
+
+        <button @click="student.age++">Age + 1</button> </br>
+        <button @click="addSex">Add Sex property: 'M'</button> </br>
+        <button @click="student.sex = 'haha'">Change Sex</button> </br>
+        <button @click="addFriend">Add in the first place a friend</button> </br>
+        <button @click="updateFirstFriendName">Modify the first friend name</button> </br>
+        <button @click="addHobby">Add a hobby</button> </br>
+        <button @click="updateTheFirstHobby">Modify the first hobby to drive</button> </br>
+        <button @click="removeFumer">Remove the hobby fumer</button> </br>
+        <h2>Age: {{student.age}}</h2>
+        <h2>Name: {{student.name}}</h2>
+        <h2 v-if="student.sex">Sex: {{student.sex}}</h2>
+        <h3>Friends: </h3>
+        <ul>
+            <li v-for="(f,index) in student.friends" :key="index">
+                {{f.name}} - {{f.age}}
+            </li>
+        </ul>
+        <h3>Hobbies: </h3>
+        <ul>
+            <li v-for="(h,index) in student.hobby" :key="index">
+                {{h}}
+            </li>
+        </ul>
+    </div>
+</body>
+
+<script text="text/javascript">
+    Vue.config.productionTip = false
+
+    // use computed
+    const vm = new Vue({
+        el: '#root',
+        data: {
+            student: {
+                name: 'tom',
+                age: 18,
+                hobby: ['fumer', 'drink', 'teindre'],
+                friends: [
+                    {name: 'jerry', age: 35},
+                    {name: 'tony', age: 36}
+                ]
+            }
+        },
+        methods: {
+            addSex(){
+                // Vue.set(this.student, 'sex', 'M')
+                this.$set(this.student, 'sex', 'M')
+            },
+            addFriend(){
+                this.student.friends.unshift({name: 'Tom', age: 20})
+            },
+            updateFirstFriendName() {
+                this.student.friends[0].name = 'san'
+                this.student.friends[0].age = '5'
+            },
+            addHobby() {
+                this.student.hobby.push("danse")
+            },
+            updateTheFirstHobby() {
+                // this.student.hobby.splice(0, 1, 'drive')
+                Vue.set(this.student.hobby, 0, 'drive')
+            },
+            removeFumer() {
+                this.student.hobby = this.student.hobby.filter((h) =>{
+                    return h !== 'fumer'
+                })
+            }
+
+        },
+    })
+
+</script>
+</html>

@@ -1,0 +1,78 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <!-- loop through Array-->
+        <h2>Person List</h2>
+        <ul>
+            <li v-for="person in persons" :key="person.id">Name: {{ person.name }} - Age: {{ person.age }}</li>
+
+            <li v-for="(a, b, c) in persons">{{a}} ------ {{b}} ------- {{c}}</li>
+
+            <li v-for="(person, index) in persons" :key="index">Name: {{ person.name }} - Age: {{ person.age }}</li>\
+
+            <li v-for="(person, index) in persons" :key="person.id">Name: {{ person.name }} - Age: {{ person.age }}</li>
+        </ul>
+
+        <!-- loop through object -->
+        <h2>Car Info</h2>
+        <ul>
+            <li v-for="(value, k) of car" :key="k">key: {{ k }} - value: {{ value }}</li>
+        </ul>
+
+        <!-- loop through string -->
+        <h2>Test String </h2>
+        <ul>
+            <li v-for="(char, index) of str" :key="index">key: {{ cahr }} - value: {{ index }}</li>
+        </ul>
+
+        <!-- loop with time fixed -->
+        <h2>Loop 5 times</h2>
+        <ul>
+            <li v-for="(number, index) of 5" :key="index">{{ number }} - {{ index }}</li>
+        </ul>
+    </div>
+</body>
+
+<script text="text/javascript">
+    Vue.config.productionTip = false
+
+    new Vue({
+        el: '#root',
+        data: {
+            persons: [
+                {
+                    id: '001',
+                    name: 'zhang',
+                    age: '18'
+                },
+                {
+                    id: '002',
+                    name: 'li',
+                    age: '19'
+                },
+                {
+                    id: '003',
+                    name: 'wang',
+                    age: '20'
+                }
+            ],
+            car: {
+                name: 'audi A8',
+                price: '70millons',
+                color: 'black'
+            },
+            str: 'hello',
+        },
+        methods: {
+        },
+    })
+
+</script>
+</html>

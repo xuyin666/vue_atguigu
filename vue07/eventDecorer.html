@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <style>
+        *{
+            margin-top: 20px;
+        }
+        .demo1 {
+            height: 50px;
+            background-color: skyblue;
+        }
+        .box1{
+            padding: 5px;
+            background-color: skyblue;
+        }
+        .box2{
+            padding: 5px;
+            background-color: orange;
+        }
+        .list{
+            width: 200px;
+            height: 200px;
+            background-color: peru;
+            overflow: auto;
+        }
+        li{
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="root">
+        <h2>Bienvenue {{name}}</h2>
+        <!-- prevent event default -->
+        <a href="http://www.atguigu.com" @click.prevent="showInfo">Click me for infos</a>
+        
+        <div class="demo1" @click="showInfo">
+            <!-- <button @click.stop="showInfo">Click me for infos</button> -->
+            <a href="http://www.atguigu.com" @click.stop.prevent="showInfo">Click me</a>
+        </div>
+        
+        <button @click.once="showInfo">Click me for infos</button>
+
+        <div class="box1" @click.capture="showMsg(1)">
+            div1
+            <div class="box2" @click="showMsg(2)">
+                div2
+            </div>
+        </div>
+
+        <div class="demo1" @click.self="showInfo">
+            <button @click="showInfo">Click me for infos</button>
+        </div>
+
+        <ul @wheel.passive="demo" class="list">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+    </div>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false;
+
+
+    new Vue({
+        el: "#root",
+        data: {
+            name: 'atGuigu'
+        },
+        methods: {
+            showInfo(e) {
+                // e.stopPropagation();
+                // e.preventDefault();
+                // console.log('haha')
+                alert("Hello friend")
+                // console.log(e.target)
+            },
+            showMsg(msg){
+                console.log(msg)
+            },
+            demo(){
+                console.log('@')
+                // for (let i = 0; i < 100000; i++){
+                //     console.log('#')
+                // }
+                console.log('fatigue');
+            },
+        }
+    })
+</script>
+</html>

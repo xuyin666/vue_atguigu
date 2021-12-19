@@ -1,0 +1,79 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <school></school>
+    </div>
+</body>
+    <script type="text/javascript">
+    
+        Vue.config.productionTip = false
+
+        // a construct function
+        // function Demo(){
+        //     this.a = 1
+        //     this.b = 2
+        // }
+
+        // // create an instance of this function
+        // const d = new Demo()
+
+        // console.log(Demo.prototype) // xian shi yuan xing shuxing zhixiang yuanxing duixiang
+        // console.log(d.__proto__)    //ying shi yuan xing shuxing zhixiang yuanxing duixiang
+
+        // console.log(Demo.prototype === d.__proto__)
+
+        // Demo.prototype.x = 99
+
+        // console.log("# ", d.x)
+        // console.log("@ ",d.__proto__.x)
+        // console.log(d)
+
+        Vue.prototype.x = 99
+        const school = Vue.extend({
+            name: 'school',
+            template:`
+                <div>
+                    <h2>School Name: {{name}}</h2>
+                    <h2>School Address: {{address}}</h2>
+                    <button @click="showX">Click me to print X</button>
+                </div>
+            `,
+            data() {
+                return {
+                    name: 'atGuigu',
+                    address: 'Beijing'
+                }
+            },
+            methods: {
+                showX(){
+                    console.log(this)
+                    console.log(this.x)
+                }
+            },
+        })
+
+
+        const vm = new Vue({
+            el: '#root',
+            data: {
+                msg: 'hello'
+            },
+            components: {
+                school
+            }
+        })
+
+        // Vue.prototype Vue de yuan xing dui xiang
+        // school.prototype school de yuan xing duixiang 
+        console.log(school.prototype.__proto__ === Vue.prototype)
+        console.log(vm)
+
+    </script>
+</html>

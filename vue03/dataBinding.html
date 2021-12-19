@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        Simple data binding: <input type="text" v-bind:value="name"></br>
+        Double data binding: <input type="text" v-model:value="name"></br>
+        <!-- v-model only used in the form element, it need to have the attribut 'value' -->
+        <h2 v-bind:x="name">Hello</h2>
+
+        Simple data binding: <input type="text" :value="name"></br>
+        Double data binding: <input type="text" v-model="name"></br>
+    </div>
+
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false // avoid the production tip 
+
+    new Vue({
+        el: '#root',
+        data: {
+            name: 'atGuigu'
+        }
+    })
+</script>
+</html>

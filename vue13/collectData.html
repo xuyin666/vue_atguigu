@@ -1,0 +1,71 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <form @submit.prevent="demo">
+            <!-- <label for="demo">Compte</label> -->
+            <!-- <input type='text' id="demo"> -->
+            Compte: <input type='text' v-model.trim="userInfo.account"> <br/><br/>
+            Password: <input type='password' v-model="userInfo.password"> <br/><br/>
+            Age: <input type="number" v-model.number="userInfo.age"><br/><br/>
+            Sex:
+            M<input type="radio" name="sex" v-model="userInfo.sex" value="M">
+            F<input type="radio" name="sex" v-model="userInfo.sex" value="F"> <br/><br/>
+            Hobby:
+            Study <input type="checkbox" v-model="userInfo.hobby" value="study">
+            Gaming <input type="checkbox" v-model="userInfo.hobby" value="Gaming">
+            Eating <input type="checkbox" v-model="userInfo.hobby" value="Eating">
+            <br/><br/>
+            School
+            <select v-model="userInfo.city">
+                <option value="">Please select school</option>
+                <option value="beijing">Beijing</option>
+                <option value="shanghai">Shanghai</option>
+                <option value="shenzhen">Shenzhen</option>
+                <option value="wuhan">Wuhan</option>
+            </select>
+            <br/><br/>
+            Other info:
+            <textarea v-model.lazy="userInfo.other"></textarea>
+            <br/><br/>
+            <input type="checkbox" v-model="userInfo.agree">Read and accept the convention<a href="http://www.atguigu.com">"User Convention"</a>
+            <br/><br/>
+            <button>Submit</button>
+        </form>
+    </div>
+</body>
+
+<script type="text/javascript">
+    Vue.config.productionTip = false
+
+    new Vue({
+        el: '#root',
+        data: {
+            userInfo: {
+                account: '',
+                password: '',
+                age: '',
+                sex: 'F',
+                hobby: [],
+                city: 'wuhan',
+                other: '',
+                agree: ''
+            }
+
+        },
+        methods: {
+            demo(){
+                // this.preventDefaut();
+                // alert(1)
+                console.log(JSON.stringify(this.userInfo));
+            }
+        },
+    })
+</script>
+</html>

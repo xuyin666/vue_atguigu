@@ -1,0 +1,72 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script type="text/javascript" src="../js/dayjs.min.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h2>Print the time</h2>
+        <!-- computed property -->
+        <h3>Now the time is {{fmtTime}}</h3>
+        <!-- methods -->
+        <h3>Now the time is {{getFmtTime()}}</h3>
+        <!-- filter -->
+        <h3>Now the time is {{time | timeFormater}}</h3>
+
+        <h3>Now the time is {{time | timeFormater('YYYY_MM_DD') | mySlice}}</h3>
+
+        <h3 :x="msg | mySlice">atGuigu</h3>
+
+        <input type="text" v-model="msg">
+    </div>
+
+    <div id="root2">
+        <h2>{{msg | mySlice}}</h2>
+    </div>
+</body>
+    <script type="text/javascript">
+            Vue.config.productionTip = false
+            //Global filter
+            Vue.filter('mySlice', function(value){
+                return value.slice(0,4)
+            })
+
+            new Vue({
+                el: '#root',
+                data: {
+                    time: 1627131102247,  // timestamp
+                    msg: 'Hello, atGuigu'
+                },
+                computed: {
+                    fmtTime(){
+                        return dayjs(this.time).format('YYYY-MM-DD HH:mm:ss') 
+                    }
+                },
+                methods: {
+                    getFmtTime() {
+                        return dayjs(this.time).format('YYYY-MM-DD HH:mm:ss') 
+                    }
+                },
+                //demo
+                filters: {
+                    // timeFormater(value) {
+                    //     return dayjs(value).format('YYYY-MM-DD HH:mm:ss') 
+                    // },
+                    timeFormater(value, str='YYYY-MM-DD HH:mm:ss') {
+                        return dayjs(value).format(str) 
+                    },
+                }
+            })
+
+            new Vue({
+                el: '#root2',
+                data: {
+                    msg: 'hello atGuigu'
+                }
+            })
+    </script>
+</html>

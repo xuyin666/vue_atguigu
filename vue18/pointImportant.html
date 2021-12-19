@@ -1,0 +1,68 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h1>{{msg}}</h1>
+        <!-- <school></school> -->
+        <my-school></my-school>
+        <!-- <my-school /> -->
+        <!-- <MySchool></MySchool> -->
+    </div>
+</body>
+    <script type="text/javascript">
+    
+        Vue.config.productionTip = false
+
+        
+        const s = Vue.extend({
+            // name: 'atguigu',
+            template:`
+                <div>
+                    <h2>School Name: {{name}}</h2>
+                    <h2>School Address: {{address}}</h2>
+                </div>
+            `,
+            data() {
+                return {
+                    name: 'atGuigu',
+                    address: 'Beijing'
+                }
+            },
+        })
+
+        // const s = {
+        //     // name: 'atguigu',
+        //     template:`
+        //         <div>
+        //             <h2>School Name: {{name}}</h2>
+        //             <h2>School Address: {{address}}</h2>
+        //         </div>
+        //     `,
+        //     data() {
+        //         return {
+        //             name: 'atGuigu',
+        //             address: 'Beijing'
+        //         }
+        //     },
+        // }
+
+        new Vue({
+            el: '#root',
+            data: {
+                msg: 'Bienvenue!'
+            },
+            components:{
+                // school: s
+                'my-school': s,
+                // MySchool: s
+            }
+        })
+
+    </script>
+</html>

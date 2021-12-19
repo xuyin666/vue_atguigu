@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h1>Inserting code</h1>
+        <h3>Hello {{ name }}</h3>
+        <hr/>
+        <h1>Direct code</h1>
+        <a v-bind:href="school.url">Click me 1</a>
+        <a :href="school.url">Click me 2{{ school.name }}</a>
+    </div>
+
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false // avoid the production tip 
+
+    // create an instance of Vue 
+    new Vue({
+        el: '#root', // el used for choosing the container the actual Vue instance works for, the value usually be css selector string
+        data: {     //saving data but only can be used by the el
+            name: 'jack',
+            addresse : '',
+            school: {
+                url : 'http://www.atguigu.com',
+                name: 'atguigu'
+            }
+            
+        }
+    })
+</script>
+</html>

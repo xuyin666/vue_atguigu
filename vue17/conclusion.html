@@ -1,0 +1,50 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h2 :style="{opacity}">Welcome to Vue</h2>
+        <button @click="opacity = 1">Set Opacity to 1</button>
+        <button @click="stop">Click me to stop</button>
+    </div>
+</body>
+    <script type="text/javascript">
+    
+        Vue.config.productionTip = false
+
+        const vm = new Vue({
+            el: '#root',
+            data: {
+                opacity: 1,
+            },
+            methods: {
+                stop() {
+                    // clearInterval(this.timer)
+                    this.$destroy()
+                }
+            },
+            mounted() {
+                this.timer = setInterval(() =>{
+                    console.log("setInterval");
+                    vm.opacity -= 0.01
+                    if(vm.opacity <= 0) vm.opacity = 1
+                }, 16)
+            },
+            beforeDestroy() {
+                console.log("vm will be destory");
+                clearInterval(this.timer)
+            },
+        })
+
+        // use an externe Timer
+        // setInterval(() =>{
+        //     vm.opacity -= 0.01
+        //     if(vm.opacity <= 0) vm.opacity = 1
+        // }, 16)
+    </script>
+</html>

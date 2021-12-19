@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+    </div>
+
+</body>
+<script type="text/javascript">
+    let number = 18 
+    let person = {
+        name:'Joe',
+        sex: 'man',
+        // age: number
+        // age: 18
+    }
+    // can't be emumerated
+    Object.defineProperty(person,'age',{
+        // value: 18,
+        // enumerable: true, // the value default is false
+        // writable: 19,
+        // configurable: true // if it can be deleted
+        
+        // when we try to read the age of the person, we use the get function and the value is the value of age 
+        get:function(){
+            console.log("@age");
+            return number
+        },
+
+        // when we try to modfiy the age of the person, we use the set function and we can receive the value
+        set(value) {
+            console.log('@set age');
+            number = value;
+        }
+    })
+
+    // console.log(Object.keys(person))
+
+    for (let key in person) {
+        console.log('@',person[key])
+    }
+    console.log(person);
+</script>
+</html>
