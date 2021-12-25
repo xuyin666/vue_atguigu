@@ -41,7 +41,7 @@
 
 
 
-![002_01](/Users/xuyin/learning_technology_stack/learning_vue/imageForDocumentation/002_01.png)
+![002_01](文档图片/002_01.png)
 
 ### 4.  学习Vue之前要掌握的JavaScript基础知识
 
