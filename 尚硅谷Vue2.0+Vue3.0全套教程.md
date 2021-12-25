@@ -213,3 +213,35 @@ MVVM模型
 
 
 
+## 第十一课：011Object.defineProperty
+
+***对应文件名：06_数据代理/1.回顾Object.defineProperty方法.html***
+
+
+
+## 第十二课：012理解数据代理
+
+***对应文件名：06_数据代理/2.何为数据代理.html***
+
+ 
+
+## 第十三课：013Vue中的数据代理
+
+***对应文件名：06_数据代理/3.Vue中的数据代理.html***
+
+
+
+![013_01](imageForDoc/013_01.png)
+
+
+
+### 总结
+
+1. Vue中的数据代理：通过vm对象来代理data对象中属性的操作（读/写）
+2. Vue中数据代理的好处：更加方便的操作data中的数据
+3. 基本原理：通过`Object.defineProperty()`把data对象中所有属性添加到vm上。为每一个添加到vm上的属性，都指定一个getter/setter。在getter/setter内部去操作（读/写）data中的对应的属性
+
+
+
+## 第十四课：014事件处理
+
