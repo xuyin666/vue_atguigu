@@ -2,29 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>模版语法</title>
+     <!-- 引入vue -->
     <script type="text/javascript" src="../js/vue.js"></script>
 </head>
 <body>
     <div id="root">
-        <h1>Inserting code</h1>
+        <h1>插值语法</h1>
         <h3>Hello {{ name }}</h3>
         <hr/>
-        <h1>Direct code</h1>
+        <h1>指令语法</h1>
         <a v-bind:href="school.url">Click me 1</a>
         <a :href="school.url">Click me 2{{ school.name }}</a>
     </div>
 
 </body>
 <script type="text/javascript">
-    Vue.config.productionTip = false // avoid the production tip 
+    Vue.config.productionTip = false // 阻止vue在启动时生成生产提示
 
-    // create an instance of Vue 
+    // 创建vue实例
     new Vue({
-        el: '#root', // el used for choosing the container the actual Vue instance works for, the value usually be css selector string
-        data: {     //saving data but only can be used by the el
+        el: '#root', // el用于指定当前Vue实例为哪个容器服务，值通常为css选择器字符串。
+        data: {     // data中用于存储数据，数据供el所指定的容器去使用，值我们暂时先写成对象。
             name: 'jack',
             addresse : '',
             school: {
