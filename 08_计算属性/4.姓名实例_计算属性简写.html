@@ -21,18 +21,24 @@
         el: '#root',
         data: {
             firstName: 'zhang',
-            lastName: 'san'
+            lastName: 'san' 
         },
         computed: {
-            fullName: {
-                get() {
-                    return this.firstName + this.lastName
-                },
-                set(value) {
-                    const arr = value.split('-')
-                    this.firstName = arr[0]
-                    this.lastName = arr[1]
-                }
+            // fullName: {
+            //     get() {
+            //         return this.firstName + this.lastName
+            //     },
+            //     set(value) {
+            //         const arr = value.split('-')
+            //         this.firstName = arr[0]
+            //         this.lastName = arr[1]
+            //     }
+            // }
+            // fullName: function(){
+            //     return this.firstName + '-' + this.lastName
+            // }
+            fullName() {
+                return this.firstName + '-' + this.lastName
             }
         }
     })
