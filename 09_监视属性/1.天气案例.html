@@ -9,6 +9,7 @@
 <body>
     <div id="root">
         <h2>Today it is {{ info }}</h2>
+        <!-- 绑定事件的时候：@xxx=“yyy” yyy可以写一些简单的语句 -->
         <button @click="isHot = !isHot">Change Weather</button>
         <button @click="changeWeather">Change Weather</button>
     </div>
@@ -29,32 +30,7 @@
             changeWeather() {
                 this.isHot = !this.isHot
             }
-        },
-        watch: {
-            // isHot: {
-            //     // immediate: true,
-            //     // deep: true,
-            //     handler(newValue, oldValue){
-            //         console.log('isHot is been changed');
-            //     }
-            // }
-            // isHot(newValue, oldValue){
-            //     console.log('isHot is been changed', newValue, oldValue);
-            // }
         }
-    })
-
-    // version complet
-    // vm.$watch('isHot', {
-    //     immediate: true,
-    //     deep: true,
-    //     handler(newValue, oldValue){
-    //         console.log('isHot is been changed');
-    //     }
-    // })
-
-    vm.$watch('isHot', function(newValue, oldValue){
-        console.log('isHot is been changed', newValue, oldValue);
     })
 
 </script>
