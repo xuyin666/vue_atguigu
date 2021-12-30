@@ -1,15 +1,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>更新时的一个问题</title>
     <script type="text/javascript" src="../js/vue.js"></script>
 </head>
 <body>
     <div id="root">
         <h2>Person List</h2>
-        <button @click="updateMei">Update Mei</button>
+        <button @click="updateMei">更新马冬梅的信息</button>
         <ul>
             <li v-for="person in persons" :key="person.id">
                 Name: {{ person.name }} - Age: {{ person.age }} - Sex: {{ person.sex }}
@@ -21,7 +19,6 @@
 <script text="text/javascript">
     Vue.config.productionTip = false
 
-    // use computed
     new Vue({
         el: '#root',
         data: {
@@ -34,11 +31,11 @@
         },
         methods: {
             updateMei() {
-                // this.persons[0].name ="马老师"
-                // this.persons[0].age = 50
-                // this.persons[0].sex = 'M'
-                // this.persons[0] = {id: '001', name: '马老师', age: '50', sex: 'M'}
-                this.persons.splice(0, 1, {id: '001', name: '马老师', age: '50', sex: 'M'})
+                // this.persons[0].name ="马老师" 奏效
+                // this.persons[0].age = 50 奏效
+                // this.persons[0].sex = 'M' 奏效
+                this.persons[0] = {id: '001', name: '马老师', age: '50', sex: 'M'}
+                // this.persons.splice(0, 1, {id: '001', name: '马老师', age: '50', sex: 'M'})
             }
         },
     })
