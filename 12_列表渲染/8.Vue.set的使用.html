@@ -23,18 +23,12 @@
                 {{f.name}} - {{f.age}}
             </li>
         </ul>
-        <ul>
-            <li v-for="(h,index) in student.hobby" :key="index">
-                {{h}}
-            </li>
-        </ul>
     </div>
 </body>
 
 <script text="text/javascript">
     Vue.config.productionTip = false
 
-    // use computed
     const vm = new Vue({
         el: '#root',
         data: {
@@ -49,7 +43,6 @@
                     rAge: 40,
                     sAge: 29
                 },
-                hobby: ['fumer', 'drink', 'teindre'],
                 friends: [
                     {name: 'jerry', age: 35},
                     {name: 'tony', age: 36}
