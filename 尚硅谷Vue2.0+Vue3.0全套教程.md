@@ -526,11 +526,11 @@ v-for指令
 
 
 
-![030_01](/Users/xuyin/learning_technology_stack/learning_vue/文档图片/030_01.png)
+![030_01](文档图片/030_01.png)
 
 
 
-![030_02](/Users/xuyin/learning_technology_stack/learning_vue/文档图片/030_02.png)
+![030_02](文档图片/030_02.png)
 
 
 
