@@ -1,9 +1,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>引出生命周期</title>
     <script type="text/javascript" src="../js/vue.js"></script>
 </head>
 <body>
@@ -25,6 +23,7 @@
             methods: {
             
             },
+            // Vue完成模板的解析并把初始的真实的DOM元素放入页面后（挂载完毕）调用mounted
             mounted() {
                 setInterval(() =>{
                     vm.opacity -= 0.01
@@ -33,7 +32,7 @@
             },
         })
 
-        // use an externe Timer
+        // 通过外部的定时器实现（不推荐）
         // setInterval(() =>{
         //     vm.opacity -= 0.01
         //     if(vm.opacity <= 0) vm.opacity = 1
