@@ -17,6 +17,7 @@
     
         Vue.config.productionTip = false
 
+        // 定义student组件
         const student = Vue.extend({
             name: 'student',
             template:`
@@ -33,6 +34,7 @@
             },
         })
 
+        // 定义school组件
         const school = Vue.extend({
             name: 'school',
             template:`
@@ -48,11 +50,13 @@
                     address: 'Beijing'
                 }
             },
+            // 注册组件（局部）
             components: {
                 student
             }
         })
 
+        // 定义hello组件
         const hello = Vue.extend({
             template: `
                 <h1>{{msg}}</h1>
@@ -64,6 +68,7 @@
             }
         })
 
+        // 定义app组件
         const app = Vue.extend({
             template: `
                 <div>
@@ -71,6 +76,7 @@
                     <school></school>    
                 </div>
             `,
+            // 注册组件（局部）
             components: {
                 school,
                 hello,
@@ -84,14 +90,5 @@
                 app
             }
         })
-
-        // new Vue({
-        //     el: '#root',
-        //     components:{
-        //         school,
-        //         hello
-        //     }
-        // })
-
     </script>
 </html>
