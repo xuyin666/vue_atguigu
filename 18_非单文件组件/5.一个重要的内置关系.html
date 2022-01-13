@@ -7,6 +7,10 @@
     <script type="text/javascript" src="../js/vue.js"></script>
 </head>
 <body>
+    <!-- 
+        1. 一个重要的内置关系：`VueComponent.prototype.__proto__ === Vue.prototype`
+        2. 为什么要有这个关系：让组件实例对象（vc）可以访问到Vue原型上的属性、方法
+     -->
     <div id="root">
         <school></school>
     </div>
@@ -15,20 +19,21 @@
     
         Vue.config.productionTip = false
 
-        // a construct function
+        // 定义一个构造函数
         // function Demo(){
         //     this.a = 1
         //     this.b = 2
         // }
 
-        // // create an instance of this function
+        // // 创建一个Demo的实例对象
         // const d = new Demo()
 
-        // console.log(Demo.prototype) // xian shi yuan xing shuxing zhixiang yuanxing duixiang
-        // console.log(d.__proto__)    //ying shi yuan xing shuxing zhixiang yuanxing duixiang
+        // console.log(Demo.prototype) // 显式原型属性
+        // console.log(d.__proto__)    // 隐式原型属性
 
         // console.log(Demo.prototype === d.__proto__)
 
+        // 程序员通过显式原型属性操作原型对象，追加一个x属性，值为99
         // Demo.prototype.x = 99
 
         // console.log("# ", d.x)
@@ -36,6 +41,8 @@
         // console.log(d)
 
         Vue.prototype.x = 99
+
+        // 定义school组件
         const school = Vue.extend({
             name: 'school',
             template:`
@@ -59,7 +66,7 @@
             },
         })
 
-
+        // 创建一个vm
         const vm = new Vue({
             el: '#root',
             data: {
