@@ -6,6 +6,7 @@
 </template>
 
 <script>
+    // 引入组件
     import School from './School'
     import Student from './Student' 
     
