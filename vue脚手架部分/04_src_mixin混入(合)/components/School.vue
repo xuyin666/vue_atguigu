@@ -6,6 +6,7 @@
 </template>
 
 <script>
+    // 引入一个混合
     // import {hunhe, hunhe2} from '../mixin'
     export default {
         name: 'School',
