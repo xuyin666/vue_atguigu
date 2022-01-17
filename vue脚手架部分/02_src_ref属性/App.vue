@@ -8,6 +8,7 @@
 </template>
 
 <script>
+    // 引入School组件
     import School from './components/School.vue'
     
     export default {
@@ -23,9 +24,9 @@
         methods: {
             showDOM(){
                 // console.log('@')
-                console.log(this.$refs.title) // real DOM Elemnt
-                console.log(this.$refs.sch) // real DOM Element
-                console.log(this.$refs.btn) // School Component Instance vc (vue component)
+                console.log(this.$refs.title) // 真实DOM元素
+                console.log(this.$refs.sch) // 真实DOM元素
+                console.log(this.$refs.btn) // School组件的实例对象（vc）
             }
         }
 
