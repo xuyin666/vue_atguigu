@@ -1086,7 +1086,7 @@ Vue中使用组件的三大步骤：
 
 ***对应文件名：vue-test03***
 
-## 总结
+### 总结
 
 - 使用`vue inspect > output.js`可以查看到Vue脚手架的默认配置
 - 使用`vue.config.js`可以对脚手架进行个性化定制
@@ -1155,6 +1155,81 @@ ref属性
 
 ## 第六十七课：067mixin混入
 
-
+***对应文件名：vue脚手架部分/04_src_mixin混入(合)***
 
 ### 总结
+
+mixin（混入）
+
+- 功能：可以把多个组件共用的配置提取成一个混入对象
+
+- 使用方式：
+
+  - 第一步定义混合，例如：
+
+    ```js
+    {
+    	data(){....},
+    	methods:{....}
+    	....
+    }
+    ```
+
+  - 第二步使用混合，例如：
+
+    1. 全局混入：`Vue.mixin(xxx)`
+    2. 局部混入：`mixins:['xxx']`
+
+
+
+## 第六十八课：068插件
+
+***对应文件名：vue脚手架部分/05_src_插件***
+
+### 总结
+
+插件
+
+- 功能：用于增强Vue
+
+- 本质：包含install方法的一个对象，install的第一个参数是Vue，第二个以后的参数是插件使用者传递的数据
+
+- 定义插件：
+
+  ```js
+  对象.install = function(Vue, options) {
+  	// 1.添加全局过滤器
+    Vue.filter(....)
+    // 2.添加全局指令
+    Vue.directive(....)
+    // 3.配置全局混入（合）
+    Vue.mixin(....)
+    // 4.添加实例方法
+    Vue.prototype.$myMethod = function () {....}
+    Vue.prototype.$myProperty = xxx
+  }
+  ```
+
+- 使用插件：Vue.use()
+
+
+
+## 第六十九课：069scoped样式
+
+***对应文件名：vue脚手架部分/06_src_scoped样式***
+
+### 总结
+
+scoped样式
+
+- 作用：让样式在局部生效，防止冲突
+- 写法：`<style scoped>`
+
+
+
+## 第七十课：070TodoList案例_静态
+
+
+
+***对应文件名：XXX***
+
