@@ -6,6 +6,7 @@
                 :checked="todo.done" 
                 @change="handleCheck(todo.id)"
             />
+            <!-- 如下代码也能实现功能，但是不太推荐，因为有点违反原则，因为修改了props -->
             <!-- <input type="checkbox" v-model="todo.done"/> -->
             <span>{{todo.title}}</span>
         </label>
@@ -16,10 +17,11 @@
 <script>
 export default {
     name: 'MyItem',
+    // 声明接收todo对象
     props: ['todo', 'checkTodo', 'deleteTodo'],
     methods: {
         handleCheck(id){
-            // informe App Component
+            // 通知App组件将对应的todo对象的done值取反
             // console.log(id);
             this.checkTodo(id);
         },

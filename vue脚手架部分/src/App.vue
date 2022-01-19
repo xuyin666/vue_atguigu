@@ -33,10 +33,12 @@
             }
         },
         methods: {
+            // 添加一个todo
             addTodo(todoObj) {
                 this.todos.unshift(todoObj)
                 // console.log('x')
             },
+            // 勾选or取消勾选一个todo
             checkTodo(id) {
                 this.todos.forEach((todo) => {
                     if (todo.id === id) {
