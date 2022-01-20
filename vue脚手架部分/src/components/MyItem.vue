@@ -20,11 +20,13 @@ export default {
     // 声明接收todo对象
     props: ['todo', 'checkTodo', 'deleteTodo'],
     methods: {
+        // 勾选or取消勾选
         handleCheck(id){
             // 通知App组件将对应的todo对象的done值取反
             // console.log(id);
             this.checkTodo(id);
         },
+        // 删除
         handleDelete(id){
             if(confirm('Are you sure? ')){
                 // console.log(id)

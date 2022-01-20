@@ -46,6 +46,7 @@
                     }
                 })
             },
+            //删除一个todo
             deleteTodo(id){
                 this.todos = this.todos.filter((todo) => {
                     return todo.id !== id
