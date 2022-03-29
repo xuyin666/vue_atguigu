@@ -1,143 +1,92 @@
 <template>
-    <div id="root">
-        <div class="todo-container">
-            <div class="todo-wrap">
-                <MyHeader :addTodo="addTodo"/>
-                <MyList :todos="todos" :checkTodo="checkTodo" :deleteTodo="deleteTodo"/>
-                <MyFooter :todos="todos" :checkAllTodo="checkAllTodo" :clearAllTodo="clearAllTodo"/>
-            </div>
-        </div>
+    <div class="app">
+        <h1>{{msg}} student name is : {{studentName}}</h1>
+        <!-- 通过父组件给子组件传递函数类型的props实现：子给父传递数据 -->
+        <School :getSchoolName="getSchoolName"/>
+
+        <!-- 通过父组件给子组件绑定一个自定义事件实现：子给父传递数据（第一种写法，使用@或v-on） -->
+        <!-- <Student v-on:atguigu="demo"/> -->
+        <!-- <Student v-on:atguigu="getStudentName"/> -->
+        <!-- <Student @atguigu="getStudentName"/> -->
+        <!-- 通过父组件给子组件绑定一个自定义事件实现：子给父传递数据（第二种写法，使用ref） -->
+        <!-- <Student ref="student"/> -->
+        <!-- <Student @atguigu.once="getStudentName"/> -->
+
+
+        <Student @atguigu="getStudentName" @demo="m1"/>
+        <!-- <Student ref="student" @click.native="show"/> -->
     </div>
 </template>
 
 <script>
-    import MyHeader from './components/MyHeader.vue';
-    import MyFooter from './components/MyFooter.vue';
-    import MyList from './components/MyList.vue';
+    import Student from './components/Student.vue';
+    import School from './components/School.vue';
     
     export default {
         name: 'App',
         components: {
-            MyHeader,
-            MyFooter,
-            MyList
+            Student,
+            School
         },
         data() {
-            //由于todos是MyHeader组件和MyFooter组件都在使用，所以放在App中（状态提升）
             return {
-                // todos: [
-                //     {id: '001', title: 'Manger', done: true},
-                //     {id: '002', title: 'Dormir', done: false},
-                //     {id: '003', title: 'Fumer', done: true},
-                // ]
-                todos: JSON.parse(localStorage.getItem('todos')) || []
+                msg: 'Hello!!!!',
+                studentName: ''
             }
         },
         methods: {
-            // 添加一个todo
-            addTodo(todoObj) {
-                this.todos.unshift(todoObj)
-                // console.log('x')
+            getSchoolName(name) {
+                console.log("app recevied school name ", name)
             },
-            // 勾选or取消勾选一个todo
-            checkTodo(id) {
-                this.todos.forEach((todo) => {
-                    if (todo.id === id) {
-                        todo.done = !todo.done
-                    }
-                })
+            demo() {
+                console.log('demo is called');
             },
-            //删除一个todo
-            deleteTodo(id){
-                this.todos = this.todos.filter((todo) => {
-                    return todo.id !== id
-                })
+            // getStudentName(name) {
+            //     console.log("app recevied student name ", name)
+            // },
+            show() {
+                alert(123)
             },
-            // 全选or取消全选
-            checkAllTodo(done) {
-                this.todos.forEach((todo) => {
-                    todo.done = done;
-                })
+            getStudentName(name, x, y, z) {
+                console.log('received student used', name, x, y, z);
             },
-            // 清除所有已经完成的todo
-            clearAllTodo() {
-                this.todos = this.todos.filter((todo) => {
-                    return !todo.done
-                })
+            // getStudentName(name, ...params) {
+            //     console.log('received student used', name, params);
+            //     this.studentName = name
+            // },
+            m1(){
+                console.log("demo event is declencher");
             }
+            
         },
-        watch: {
-            // todos(value) {
-            //     localStorage.setItem('todos', JSON.stringify(value))
-            // }
-            todos:{
-                deep: true,
-                handler(value) {
-                    localStorage.setItem('todos', JSON.stringify(value))
-                }
-            }
+        mounted() {
+            // this.$refs.student.$on('atguigu', this.getStudentName) 绑定自定义事件
+
+            // setTimeout(()=>{
+            //     this.$refs.student.$on('atguigu', this.getStudentName)
+            // }, 3000)
+
+            // this.$refs.student.$once('atguigu', this.getStudentName) 绑定自定义事件
+
+            // this.$refs.student.$on('atguigu', (name, ...params) => {
+            //     console.log('received student used', name, params);
+            //     this.studentName = name
+            //     console.log(this);
+            // })
+
+            // not OK
+            // this.$refs.student.$on('atguigu', function(name, ...params){
+            //     console.log('received student used', name, params);
+            //     this.studentName = name
+            //     console.log(this);
+            // })
         }
     }
 </script>
 
-<style>
-    /* base */
-    body {
-        background-color: #fff;
+<style scoped>
+    .app{
+        background-color: gray;
+        padding: 5px;
     }
-
-    .btn {
-        /* don't add line break and can set the width and height */
-        display: inline-block;
-        /* Padding is used to create space around an element's content, inside of any defined borders. */
-        padding: 4px 12px;
-        /* Margins are used to create space around elements, outside of any defined borders. */
-        margin-bottom: 0;
-        /* Set the font size for different elements: */
-        font-size: 14px;
-        /* line-height = 1/2*hang ju(la distance between two line) + font-size + 1/2*hang ju(la distance between two line)*/
-        line-height: 20px;
-        /* Set the text alignment for different <div> elements: like zuo dui qi, you dui qi, ju zhong dui qi*/
-        text-align: center;
-        vertical-align: middle;
-        /* CSS can generate a bunch of different mouse cursors: */
-        cursor: pointer;
-        /* box-shadow: none|h-offset v-offset blur spread color |inset|initial|inherit; */
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
-        border-radius: 4px;
-    }
-
-    .btn-danger {
-        color: #fff;
-        background-color: #da4f49;
-        border: 1px solid #bd362f;
-    }
-
-    /* Select and style a link when you mouse over it: */
-    .btn-danger:hover {
-        color: #fff;
-        background-color: #bd362f;
-    }
-
-    /* Select and style an input field when it gets focus: */
-    .btn:focus {
-        /* An outline is a line drawn outside the element's border. */
-        outline: none;
-    }
-
-    .todo-container {
-        width: 600px;
-        /* * top and bottom margins are 0 */
-        /* * right and left margins are auto */
-        margin: 0 auto;
-        /* border: 1px solid black; */
-    }
-    .todo-container .todo-wrap {
-        padding: 10px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-    }
-
-
-
 </style>
