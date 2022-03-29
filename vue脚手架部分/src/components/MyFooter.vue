@@ -2,7 +2,6 @@
   <div class="todo-footer" v-show="total">
         <label>
             <!-- <input type="checkbox" :checked="isAll" @change="checkAll"/> -->
-            <!-- <input type="checkbox" :checked="isAll" @change="checkAll"/> -->
             <input type="checkbox" v-model="isAll" />
         </label>
         <span>
@@ -41,13 +40,12 @@ export default {
             set(value) {
                 this.checkAllTodo(value)
             }
-            
         }
     },
     methods: {
-        checkAll(e) {
-            this.checkAllTodo(e.target.checked)
-        },
+        // checkAll(e) {
+        //     this.checkAllTodo(e.target.checked)
+        // },
         clearAll() {
             this.clearAllTodo()
         }
