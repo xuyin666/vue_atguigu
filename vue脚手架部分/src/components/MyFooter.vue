@@ -31,7 +31,6 @@ export default {
             //     return pre + (current.done ? 1 : 0)
             // }, 0)
 
-
             return this.todos.reduce((pre, todo)=> pre + (todo.done ? 1 : 0), 0)
             // return this.todos.filter((todo) => { return todo.done }).length;
         },
