@@ -56,10 +56,10 @@
                     todo.done = done;
                 })
             },
-            // 更新一个todo
             updateTodo(id, title) {
                 this.todos.forEach((todo) => {
-                    if(todo.id === id) todo.title = title;
+                    if(todo.id === id)
+                        todo.title = title;
                 })
             },
             clearAllTodo() {
@@ -82,14 +82,14 @@
         mounted() {
             this.$bus.$on('checkTodo', this.checkTodo)
             // this.$bus.$on('deleteTodo', this.deleteTodo)
-            this.$bus.$on('updateTodo', this.updateTodo)
             this.pubId = pubsub.subscribe('deleteTodo', this.deleteTodo);
+            this.$bus.$on('updateTodo', this.updateTodo)
         },
         beforeDestroy() {
             this.$bus.$off('checkTodo')
+            pubsub.unsubscribe(this.pubId)
             // this.$bus.$off('deleteTodo')
             this.$bus.$off('updateTodo')
-            pubsub.unsubscribe(this.pubId)
         }
     }
 </script>

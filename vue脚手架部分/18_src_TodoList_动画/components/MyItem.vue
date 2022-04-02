@@ -1,24 +1,26 @@
 <template>
-    <li>
-        <label>
-            <input 
-                type="checkbox" 
-                :checked="todo.done" 
-                @change="handleCheck(todo.id)"
-            />
-            <!-- <input type="checkbox" v-model="todo.done"/> -->
-            <span v-show="!todo.isEdit">{{todo.title}}</span>
-            <input 
-                type="text" 
-                v-show="todo.isEdit" 
-                :value="todo.title" 
-                @blur="handleBlur(todo, $event)"
-                ref="inputTitle"
-            />
-        </label>
-        <button class="btn btn-danger" @click="handleDelete(todo.id)">Delete</button>
-        <button class="btn btn-edit" @click="handleEdit(todo)" v-show="!todo.isEdit">Modify</button>
-    </li>
+    <!-- <transition name="todo" appear> -->
+        <li>
+            <label>
+                <input 
+                    type="checkbox" 
+                    :checked="todo.done" 
+                    @change="handleCheck(todo.id)"
+                />
+                <!-- <input type="checkbox" v-model="todo.done"/> -->
+                <span v-show="!todo.isEdit">{{todo.title}}</span>
+                <input 
+                    type="text" 
+                    v-show="todo.isEdit" 
+                    :value="todo.title" 
+                    @blur="handleBlur(todo, $event)"
+                    ref="inputTitle"
+                />
+            </label>
+            <button class="btn btn-danger" @click="handleDelete(todo.id)">Delete</button>
+            <button class="btn btn-edit" @click="handleEdit(todo)" v-show="!todo.isEdit">Modify</button>
+        </li>
+    <!-- </transition> -->
 </template>
 
 <script>
@@ -110,4 +112,23 @@ li:hover {
 li:hover button{
     display: block;
 }
+
+/* .todo-enter-active {
+        animation: atguigu 1s linear;
+    }
+
+.todo-leave-active {
+    animation: atguigu 1s reverse linear;
+}
+
+@keyframes atguigu {
+    from {
+        transform: translateX(100%)
+    }
+    to {
+        transform: translateX(0px);
+    }
+} */
+
+
 </style>

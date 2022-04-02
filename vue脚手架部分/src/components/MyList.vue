@@ -1,10 +1,12 @@
 <template>
     <div class="todo-main">
-        <MyItem 
-            v-for="todoObj in todos" 
-            :key="todoObj.id" 
-            :todo="todoObj" 
-        />
+        <transition-group name="todo" appear>
+            <MyItem 
+                v-for="todoObj in todos" 
+                :key="todoObj.id" 
+                :todo="todoObj" 
+            />
+        </transition-group>
     </div>
 </template>
 
@@ -36,6 +38,23 @@
     border-radius: 2px;
     padding-left: 5px;
     margin-top: 10px;
+}
+
+.todo-enter-active {
+        animation: atguigu 1s linear;
+    }
+
+.todo-leave-active {
+    animation: atguigu 1s reverse linear;
+}
+
+@keyframes atguigu {
+    from {
+        transform: translateX(100%)
+    }
+    to {
+        transform: translateX(0px);
+    }
 }
 
 </style>
